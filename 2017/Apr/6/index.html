@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+	<style>
+		body {
+			overflow: hidden;
+		}
+
+		#container {
+			align-items: center;
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			width: 100vw;
+		}
+
+		#container table {
+			border: 2px solid #3388AA;
+    		border-spacing: 0;
+		}
+
+		th, td {
+			border: 1px solid #3388AA;
+			padding: 10px 20px;
+		}
+
+		th {
+			background-color: #6699FF;
+		}
+
+		td {
+			cursor: pointer;
+		}
+
+		tr:nth-child(even) td {
+			background-color: #D9B3E6;
+		}
+
+		tr:nth-child(odd) td {
+			background-color: #EFF0DC;
+		}
+
+		tr:hover {
+			opacity: .8;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+
+	<script>
+		let data = [
+			{
+				id: 1,
+				name: 'Peter',
+				age: 18,
+				gender: 'Male'
+			}, {
+				id: 2,
+				name: 'Tim',
+				age: 22,
+				gender: 'Male'
+			}, {
+				id: 3,
+				name: 'Anne',
+				age: 23,
+				gender: 'Female'
+			}, {
+				id: 4,
+				name: 'Simon',
+				age: 39,
+				gender: 'Male'
+			}, {
+				id: 5,
+				name: 'Linda',
+				age: 28,
+				gender: 'Female'
+			}
+		]
+
+		const $d = (id) => {
+			return document.getElementById(id)
+		}
+
+		const $c = (tagName) => {
+			return document.createElement(tagName)
+		}
+
+		const bootstrapTable = (data) => {
+			let table = buildTable(data)
+			let container = $d('container')
+			container.appendChild(table)
+		}
+
+		const buildTable = (data) => {
+			let table = $c('table')
+			let headersInfo = getHeaders(data)
+			let thead = buildHeader(headersInfo)
+			let tbody = buildTBody(data)
+			
+			table.appendChild(thead)
+			table.appendChild(tbody)
+			return table
+		}
+
+		const getHeaders = (data) => {
+			return Object.keys(data[0])
+		}
+
+		const buildHeader = (headerData) => {
+			let thead = $c('thead')
+			headerData.forEach(header => {
+				let th = $c('th')
+				th.innerHTML = header
+				thead.appendChild(th)
+			})
+			return thead
+		}
+
+		const buildTBody = (data) => {
+			let tbody = $c('tbody')
+			data.forEach(row => {
+				tbody.appendChild(buildRow(row))
+			})
+			return tbody
+		}
+
+		const buildRow = (rowData) => {
+			let row = $c('tr')
+			for(let columnName in rowData) {
+				row.appendChild(buildColumn(rowData[columnName]))
+			}
+			return row
+		}
+
+		const buildColumn = (columnData) => {
+			let column = $c('td')
+			column.innerHTML = columnData
+			return column
+		}
+
+		bootstrapTable(data);
+	</script>
+</body>
+</html>
