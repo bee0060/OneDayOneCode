@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Data</title>
+	<style>
+		#txaOutput {
+			height: 400px;
+			width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<span>Picture: </span><input id="inputFile" type="file">
+		<br>
+		<br>
+		<br>
+		<div>Name: <span id="fileName"></span></div>
+		<div>Type: <span id="fileType"></span></div>
+		<div>Size: <span id="fileSize"></span></div>
+		<textarea name="" id="txaOutput" cols="30" rows="10"></textarea>
+	</div>
+	
+
+	<script>
+		function $d(id) {
+			return document.getElementById(id)
+		}
+
+		function changeFile() {
+			var inputFile = $d('inputFile')
+			var fileName = $d('fileName')
+			var fileType = $d('fileType')
+			var fileSize = $d('fileSize')
+			var txaOutput = $d('txaOutput')
+			var currentFile = inputFile.files[0] || {}
+
+			fileName.innerHTML = currentFile.name;
+			fileType.innerHTML = currentFile.type;
+			fileSize.innerHTML = currentFile.size;
+
+			txaOutput.innerHTML = getImageData(currentFile).join('\\n')
+
+		}
+
+		function getImageData (file) {
+			var imgData = []
+			return imgData
+		}
+
+		function init() {			
+			var inputFile = $d('inputFile')
+			inputFile.addEventListener("change", changeFile, false);
+		}
+
+		init()
+
+	</script>
+</body>
+</html>
