@@ -28,25 +28,71 @@
 			return document.getElementById(id)
 		}
 
+		function $c(tagName) {
+			return document.createElement(tagName)
+		}
+
 		function changeFile() {
 			var inputFile = $d('inputFile')
 			var fileName = $d('fileName')
 			var fileType = $d('fileType')
 			var fileSize = $d('fileSize')
-			var txaOutput = $d('txaOutput')
-			var currentFile = inputFile.files[0] || {}
+			var currentFile = inputFile.files[0]
 
 			fileName.innerHTML = currentFile.name;
 			fileType.innerHTML = currentFile.type;
 			fileSize.innerHTML = currentFile.size;
 
-			txaOutput.innerHTML = getImageData(currentFile).join('\\n')
-
+			currentFile && loadImage(currentFile, loadImageData)
 		}
 
-		function getImageData (file) {
-			var imgData = []
-			return imgData
+		function loadImage (file, callback) {
+			var img = $c('img')
+
+			img.onload = function() {
+				if (this.complete)
+			    {
+			        typeof callback === 'function' && callback(this)
+			    }
+			}
+			img.src = window.URL.createObjectURL(file);
+		}
+
+		function loadImageData(img) {
+			var canvas = $c('canvas')
+			var ctx = canvas.getContext('2d')
+			ctx.drawImage(img, 0, 0)
+			var imgData = ctx.getImageData(0, 0, img.width, img.height)
+			displayImageData(imgData)
+
+			canvas = null
+			ctx = null
+			imgData = null
+		}
+
+		function displayImageData(imgData) {
+			var BIT_SIZE = 4
+			var bitIndex = 0
+			var colorIndex = 0
+			var length = imgData.data.length
+			var currentColor = []
+			var formattedArr = []
+
+			for(var bit in imgData.data) {
+				bitIndex < BIT_SIZE - 1 && currentColor.push(imgData.data[bit])
+				bitIndex === BIT_SIZE - 1 && currentColor.push(imgData.data[bit] / 255)
+
+				if(bitIndex++ === BIT_SIZE - 1) {
+					formattedArr.push(colorIndex, ' BIT COLOR: rgba(', currentColor.join(), ')\n')
+					bitIndex = 0
+					currentColor = []
+					colorIndex++
+				}
+			}
+
+			var txaOutput = $d('txaOutput')
+			txaOutput.innerHTML = formattedArr.join('')
+			formattedArr = null
 		}
 
 		function init() {			
