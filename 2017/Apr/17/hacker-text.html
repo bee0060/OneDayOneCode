@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hacker Text</title>
+	<style>
+		body {
+			background-color: black;
+			height: 100vh;
+			overflow: hidden;
+			width: 100vh;
+		}
+		.container {
+			display: flex;
+			flex-direction: row;
+			width: 100vw;
+		}
+		.container .text {
+			color: lightgreen;
+			font-family: Arial;
+			font-size: 18px;
+			line-height: 20px;
+			opacity: .7;
+			overflow: hidden;
+			text-shadow: 2px 3px 5px #8F7;
+			word-break: break-all;
+			width: 18px;
+		}
+
+		.text-drop {
+			-webkit-animation-name: textHeightChange;
+			-webkit-animation-timing-function: linear;
+		  	-webkit-animation-iteration-count: infinite;
+		  	-webkit-animation-direction: normal;
+		  	-webkit-animation-delay: 0s;
+		}
+		.text-drop-1 {
+			-webkit-animation-duration: 3s;
+		}
+		.text-drop-2 {
+			-webkit-animation-duration: 3.5s;
+		}
+		.text-drop-3 {
+			-webkit-animation-duration: 4s;
+		}
+		.text-drop-4 {
+			-webkit-animation-duration: 4.5s;
+		}
+		.text-drop-5 {
+			-webkit-animation-duration: 5s;
+		}
+		.text-drop-delay-1 {
+			-webkit-animation-delay: 0.2s;
+		}
+		.text-drop-delay-2 {
+			-webkit-animation-delay: 0.3s;
+		}
+		.text-drop-delay-3 {
+			-webkit-animation-delay: 0.4s;
+		}
+		.text-drop-delay-4 {
+			-webkit-animation-delay: 0.6s;
+		}
+		.text-drop-delay-5 {
+			-webkit-animation-delay: 0.7s;
+		}
+
+		@-webkit-keyframes textHeightChange {
+			to {
+				height: 99vh;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="container" class="container"></div>
+
+	<script>
+	var chars = '1234567890-=`~!@#$%^&*()_+QWERTYUIOPqwertyuiopasdfghjkl;ASDFGHJKLZXCVBNM<>?zxcvbnm,./';
+	var windowHeight = document.body.clientHeight;
+	var windowWidth = document.body.clientWidth;
+	var FONT_SIZE = 18;
+	var MIN_TEXT_HEIGHT = getMinTextHeight()
+
+	function getMinTextHeight() {
+		return parseInt(windowHeight * 0.6, 10)
+	}
+
+	function $d(id) {
+		return document.getElementById(id)
+	}
+
+	function $c(tagName) {
+		return document.createElement(tagName)
+	}
+
+	function $f() {
+		return document.createDocumentFragment()
+	}
+
+	function runTextDrop () {
+		var timeoutSeed = 5000 + Math.ceil(Math.random() * 3000 + 0.5)
+		fillContainer()
+
+		setTimeout(runTextDrop, timeoutSeed)
+	}
+
+	function fillContainer () {
+		var container = $d('container')
+		var textCount = Math.ceil(windowWidth / FONT_SIZE) * 3
+		var frag = $f()
+
+		while(textCount--) {
+			frag.appendChild(createRandomText())
+		}
+
+		container.innerHTML = ""
+		container.appendChild(frag)
+	}
+
+	function createRandomText () {
+		var divText = $c('div')
+		var textHeight = MIN_TEXT_HEIGHT + parseInt(windowHeight * Math.random() * 0.4, 10);
+		var textLength = Math.ceil(textHeight / FONT_SIZE)
+		var charLength = chars.length
+		var contentSeed, animateSeed, delaySeed, marginTopSeed, heightSeed
+		var text = []
+
+		while(textLength--) {
+			contentSeed = Math.ceil(Math.random() * chars.length + 0.5)
+			text.push(chars[contentSeed])
+		}
+
+		animateSeed = Math.ceil(Math.random() * 5 + 0.5)
+		delaySeed = Math.ceil(Math.random() * 5 + 0.5)
+		marginTopSeed = Math.ceil(Math.random() * 40 + 0.5)
+		heightSeed = Math.ceil(Math.random() * 80 + 0.5)
+
+		divText.className = "text text-drop text-drop-" + animateSeed + " text-drop-delay-" + delaySeed
+		divText.innerHTML = escape(text.join(''))
+		divText.style.marginTop = marginTopSeed + 'px'
+		divText.style.height = heightSeed + 'vh'
+
+		return divText
+	}
+
+	runTextDrop()
+
+
+	</script>
+</body>
+</html>
