@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Circle Animation</title>
+	<style>
+		body {
+			background-color: black;
+		}
+
+		.axis {
+			border: 1px solid #000;
+			display: flex;
+			justify-content: flex-end;
+			height: 30px;
+			margin-left: 50vw;
+			margin-top: calc(50vh - 15px);
+			opacity: 0;
+			position: absolute;
+			width: 400px;
+
+			-webkit-transform: rotate(0deg);
+			-webkit-transform-origin: left center;
+
+			-webkit-animation-name: round, hoz-animate;
+			-webkit-animation-duration: 2s, 6.18s;
+			-webkit-animation-timing-function: linear, ease;
+		  	-webkit-animation-fill-mode: forwards, forwards;
+		  	-webkit-animation-iteration-count: infinite, infinite;
+		  	-webkit-animation-direction: normal, alternate;
+		}
+
+		.axis .circle {
+			background-color: white;
+			border-radius: 50%;
+			height: 30px;
+			width: 30px;
+		}
+
+		@-webkit-keyframes round {
+			from {
+				-webkit-transform: rotate(180deg);
+			}
+			to {
+				-webkit-transform: rotate(540deg);
+			}
+		}
+
+		@-webkit-keyframes hoz-animate {
+			from {
+				opacity: 1;
+				width: 400px;
+			}
+			95% {
+				width: 0;
+			}
+			to {
+				opacity: 1;
+				width: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<script>
+	function $d(id) {
+		return document.getElementById(id)
+	}
+	function $c(tagName) {
+		return document.createElement(tagName)
+	}
+	function $f() {
+		return document.createDocumentFragment()
+	}
+	function initCircles() {
+		var DURATION = 1
+		var CIRCLE_COUNT = 70
+		var perDuration = DURATION / CIRCLE_COUNT * 7
+		var body = document.body
+		var frag = $f()
+
+		for(var i = 0; i< CIRCLE_COUNT; i++) {
+			var divAxis = $c("div")
+			var divCircle = $c("div")
+			divAxis.className = "axis"
+			divCircle.className = "circle"
+			divAxis.appendChild(divCircle)
+			divAxis.style.cssText = "-webkit-animation-delay: " + perDuration * i + "s, " + perDuration * i + "s;"
+			frag.appendChild(divAxis)
+		}
+		body.appendChild(frag)
+	}
+
+	initCircles()
+
+	</script>
+</body>
+</html>
