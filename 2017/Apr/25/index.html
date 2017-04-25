@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Circle Animation 2</title>
+	<style>
+		body {
+			background-color: black;
+		}
+
+		.axis {
+			border: 1px solid #000;
+			display: flex;
+			justify-content: flex-end;
+			height: 30px;
+			margin-left: 50vw;
+			margin-top: calc(50vh - 15px);
+			position: absolute;
+			opacity: 0;
+			width: 300px;
+
+			-webkit-transform: rotate(0deg);
+			-webkit-transform-origin: left center;
+
+			-webkit-animation-name: round, shake-less-1;
+			-webkit-animation-duration: 2s, .35s;
+			-webkit-animation-timing-function: linear, ease;
+		  	-webkit-animation-fill-mode: forwards, forwards;
+		  	-webkit-animation-iteration-count: infinite, infinite;
+		  	-webkit-animation-direction: normal, alternate;
+		}
+
+		.axis-lg {
+			width: 400px;
+
+			-webkit-animation-name: round-reverse;
+		}
+
+		.axis-1 { -webkit-animation-name: round, shake-less-2;-webkit-animation-delay: 0s, 2.5s; }
+		.axis-2 { -webkit-animation-delay: 0.2s, 2.5s; }
+		.axis-3 { -webkit-animation-name: round, shake-less-2;-webkit-animation-delay: 0.4s, 2.5s; }
+		.axis-4 { -webkit-animation-delay: 0.6s, 2.5s; }
+		.axis-5 { -webkit-animation-name: round, shake-less-2;-webkit-animation-delay: 0.8s, 2.5s; }
+		.axis-6 { -webkit-animation-delay: 1s, 2.5s; }
+		.axis-7 { -webkit-animation-name: round, shake-less-2;-webkit-animation-delay: 1.2s, 2.5s; }
+		.axis-8 { -webkit-animation-delay: 1.4s, 2.5s; }
+		.axis-9 { -webkit-animation-name: round, shake-less-2;-webkit-animation-delay: 1.6s, 2.5s; }
+		.axis-10 { -webkit-animation-delay: 1.8s, 2.5s; }
+
+		.axis-lg-1 { -webkit-animation-delay: 0s, 2.5s; }
+		.axis-lg-2 { -webkit-animation-delay: 0.2s, 2.5s; }
+		.axis-lg-3 { -webkit-animation-delay: 0.4s, 2.5s; }
+		.axis-lg-4 { -webkit-animation-delay: 0.6s, 2.5s; }
+		.axis-lg-5 { -webkit-animation-delay: 0.8s, 2.5s; }
+		.axis-lg-6 { -webkit-animation-delay: 1s, 2.5s; }
+		.axis-lg-7 { -webkit-animation-delay: 1.2s, 2.5s; }
+		.axis-lg-8 { -webkit-animation-delay: 1.4s, 2.5s; }
+		.axis-lg-9 { -webkit-animation-delay: 1.6s, 2.5s; }
+		.axis-lg-10 { -webkit-animation-delay: 1.8s, 2.5s; }
+
+		.axis .circle {
+			background-color: white;
+			border-radius: 50%;
+			height: 30px;
+			width: 30px;
+		}
+
+		@-webkit-keyframes round {
+			from {
+				opacity: 1;
+				-webkit-transform: rotate(180deg);
+			}	
+			to {
+				opacity: 1;
+				-webkit-transform: rotate(540deg);
+			}
+		}
+
+		@-webkit-keyframes round-reverse {
+			from {
+				opacity: 1;
+				-webkit-transform: rotate(180deg);
+			}	
+			to {
+				opacity: 1;
+				-webkit-transform: rotate(-180deg);
+			}
+		}
+
+		@-webkit-keyframes shake-less-1 {
+			from {
+				width: 300px;
+			}
+			to {
+				width: 200px;
+			}
+		}
+
+		@-webkit-keyframes shake-less-2 {
+			from {
+				width: 300px;
+			}
+			to {
+				width: 50px;
+			}
+		}
+
+		@-webkit-keyframes shake-more-1 {
+			from {
+				width: 400px;
+			}
+			to {
+				width: 500px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="axis axis-1"><div class="circle"></div></div>
+	<div class="axis axis-2"><div class="circle"></div></div>
+	<div class="axis axis-3"><div class="circle"></div></div>
+	<div class="axis axis-4"><div class="circle"></div></div>
+	<div class="axis axis-5"><div class="circle"></div></div>
+	<div class="axis axis-6"><div class="circle"></div></div>
+	<div class="axis axis-7"><div class="circle"></div></div>
+	<div class="axis axis-8"><div class="circle"></div></div>
+	<div class="axis axis-9"><div class="circle"></div></div>
+	<div class="axis axis-10"><div class="circle"></div></div>
+
+	<div class="axis axis-lg axis-lg-1"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-2"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-3"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-4"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-5"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-6"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-7"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-8"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-9"><div class="circle"></div></div>
+	<div class="axis axis-lg axis-lg-10"><div class="circle"></div></div>
+</body>
+</html>
