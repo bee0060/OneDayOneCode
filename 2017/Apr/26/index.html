@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Magatama 1</title>
+	<style>
+	.magatama {
+		height: 10px;
+		margin-left: 50vw;
+		margin-top: calc(50vh - 5px);
+		position: relative;
+		width: 10px;
+	}
+
+	.magatama-tail-container {
+		height: 50%;		
+		width: 100%;
+		overflow: hidden;
+	}
+	.magatama-tail {
+		background-color: black;
+		border-radius: 50%;
+		height: 200%;
+		
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.magatama-tail::after {
+		background-color: white;
+		border-radius: 50%;
+		content: "";
+		display: block;
+		height: 50%;
+		left: 50%;
+		position: absolute;
+		top: 25%;
+		width: 50%;
+		z-index: 9;
+	}
+
+	.magatama-body {
+		background-color: black;
+		border-radius: 50%;
+		display: block;
+		height: 70%;
+		margin-top: -35%;
+		position: absolute;
+		width: 70%;
+		z-index: 10;
+	}
+	</style>
+</head>
+<body>
+	<div class="magatama">
+		<div class="magatama-tail-container">
+			<div class="magatama-tail">			
+			</div>
+		</div>
+		<div class="magatama-body"></div>
+	</div>
+	
+</body>
+</html>
