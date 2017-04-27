@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Magatama 2</title>
+	<style>
+	.eye-edge {
+		background-image:-webkit-radial-gradient(contain, white 30%, red 99%);
+		border: 2px solid black;
+		border-radius: 50%;
+		box-sizing: border-box;
+		height: 80px;
+		margin-left: calc(50vw - 40px);
+		margin-top: calc(50vh - 50px);
+		position: absolute;
+		width: 80px;
+		z-index: 10;
+	}
+	.circle {
+		background-color: transparent;
+		border: 2px solid black;
+		border-radius: 50%;
+		box-sizing: border-box;
+		height: 50px;
+		margin-left: calc(50% - 25px);
+		margin-top: calc(50% - 25px);
+		position: absolute;
+		width: 50px;
+		z-index: 20;
+	}
+
+	.pupil {
+		background-color: black;
+		border-radius: 50%;
+		height: 10px;
+		margin-left: calc(50% - 5px);
+		margin-top: calc(50% - 5px);
+		position: absolute;
+		width: 10px;
+	}
+
+	.axis {
+		display: flex;
+		justify-content: flex-end;
+		height: 10px;
+		margin-left: 50vw;
+		margin-top: calc(50vh - 15px);
+		position: absolute;
+		width: 30px;
+		z-index: 10;
+
+		-webkit-transform-origin: left center;
+	}
+
+	.axis-1 {
+		-webkit-transform: rotate(150deg);
+	}
+
+	.axis-2 {
+		-webkit-transform: rotate(270deg);
+	}
+
+	.axis-3 {
+		-webkit-transform: rotate(30deg);
+	}
+
+	.magatama {
+		height: 10px;
+		position: relative;
+		width: 10px;
+
+		-webkit-transform: rotate(50deg);
+		-webkit-transform-origin: left center;
+	}
+
+	.magatama-tail-container {
+		height: 50%;		
+		width: 100%;
+		overflow: hidden;
+	}
+	.magatama-tail {
+		background-color: black;
+		border-radius: 50%;
+		height: 200%;		
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.magatama-tail::after {
+		background-color: white;
+		border-radius: 50%;
+		content: "";
+		display: block;
+		height: 50%;
+		left: 50%;
+		position: absolute;
+		top: 25%;
+		width: 50%;
+		z-index: 9;
+	}
+
+	.magatama-body {
+		background-color: black;
+		border-radius: 50%;
+		height: 70%;
+		margin-top: -35%;
+		position: absolute;
+		width: 70%;
+		z-index: 10;
+	}
+	</style>
+</head>
+<body>
+	<div class="eye-edge">
+		<div class="circle">
+			<div class="pupil"></div>
+		</div>
+	</div>	
+	<div class="axis axis-1">
+		<div class="magatama">
+			<div class="magatama-tail-container">
+				<div class="magatama-tail">			
+				</div>
+			</div>
+			<div class="magatama-body"></div>
+		</div>
+	</div>
+	<div class="axis axis-2">
+		<div class="magatama">
+			<div class="magatama-tail-container">
+				<div class="magatama-tail">			
+				</div>
+			</div>
+			<div class="magatama-body"></div>
+		</div>
+	</div>
+	<div class="axis axis-3">
+		<div class="magatama">
+			<div class="magatama-tail-container">
+				<div class="magatama-tail">			
+				</div>
+			</div>
+			<div class="magatama-body"></div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
