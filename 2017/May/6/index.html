@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Magatama 3</title>
+	<style>
+	body {
+		position: relative;
+	}
+
+	.eye-edge {
+		background-image:-webkit-radial-gradient(contain, white 30%, red 99%);
+		border: 2px solid black;
+		border-radius: 50%;
+		box-sizing: border-box;
+		height: 200px;
+		margin-left: calc(50vw - 125px);
+		margin-top: calc(50vh - 125px);
+		position: absolute;
+		width: 200px;
+		z-index: 10;
+
+		-webkit-transform-origin: center center;
+		-webkit-transform: scale(3, 3);
+
+		-webkit-animation-name: round;
+		-webkit-animation-duration: 3s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-iteration-count: infinite;
+	}
+
+	@-webkit-keyframes round {
+		from {
+			-webkit-transform: rotate(0deg);
+		}	
+		to {
+			opacity: 1;
+			-webkit-transform: rotate(360deg);
+		}
+	}
+
+	.circle {
+		background-color: transparent;
+		border: 5px solid black;
+		border-radius: 50%;
+		box-sizing: border-box;
+		height: 125px;
+		margin-left: calc(50% - 62.5px);
+		margin-top: calc(50% - 62.5px);
+		position: absolute;
+		width: 125px;
+		z-index: 20;
+	}
+
+	.pupil {
+		background-color: black;
+		border-radius: 50%;
+		height: 25px;
+		margin-left: calc(50% - 12.5px);
+		margin-top: calc(50% - 12.5px);
+		position: absolute;
+		width: 25px;
+	}
+
+	.axis {
+		display: flex;
+		justify-content: flex-end;
+		height: 25px;
+		margin-left: 50%;
+		margin-top: calc(50% - 7.5px);
+		position: absolute;
+		width: 78px;
+		z-index: 10;
+
+		-webkit-transform-origin: left center;
+	}
+
+	.axis-1 {
+		-webkit-transform: rotate(150deg);
+	}
+
+	.axis-2 {
+		-webkit-transform: rotate(270deg);
+	}
+
+	.axis-3 {
+		-webkit-transform: rotate(30deg);
+	}
+
+	.magatama {
+		height: 25px;
+		position: relative;
+		width: 25px;
+
+		-webkit-transform: rotate(50deg);
+		-webkit-transform-origin: left center;
+	}
+
+		
+
+	.magatama-tail-container {
+		height: 50%;		
+		width: 100%;
+		overflow: hidden;
+	}
+	.magatama-tail {
+		background-color: black;
+		border-radius: 50%;
+		height: 200%;		
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.magatama-tail::after {
+		background-image: -webkit-linear-gradient(left, #FF7272, #FF7272);
+    	background-color: white;
+		border-radius: 50%;
+		content: "";
+		display: block;
+		height: 50%;
+		left: 50%;
+		position: absolute;
+		top: 25%;
+		width: 50%;
+		z-index: 9;
+	}
+
+	.magatama-body {
+		background-color: black;
+		border-radius: 50%;
+		height: 70%;
+		margin-top: -35%;
+		position: absolute;
+		width: 70%;
+		z-index: 10;
+	}
+	</style>
+</head>
+<body>
+	<div class="eye-edge">
+		<div class="circle">
+			<div class="pupil"></div>
+		</div>
+		<div class="axis axis-1">
+			<div class="magatama">
+				<div class="magatama-tail-container">
+					<div class="magatama-tail">			
+					</div>
+				</div>
+				<div class="magatama-body"></div>
+			</div>
+		</div>
+		<div class="axis axis-2">
+			<div class="magatama">
+				<div class="magatama-tail-container">
+					<div class="magatama-tail">			
+					</div>
+				</div>
+				<div class="magatama-body"></div>
+			</div>
+		</div>
+		<div class="axis axis-3">
+			<div class="magatama">
+				<div class="magatama-tail-container">
+					<div class="magatama-tail">			
+					</div>
+				</div>
+				<div class="magatama-body"></div>
+			</div>
+		</div>
+	</div>	
+	
+	
+	
+</body>
+</html>
